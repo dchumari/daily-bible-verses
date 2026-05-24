@@ -10,6 +10,7 @@ venv/
 # Generated output
 *.png
 !assets/*.png
+!verse_post.png
 
 # IDE
 .vscode/

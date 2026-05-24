@@ -2,6 +2,10 @@
 
 Automated bot that posts Bible verse poster images to Twitter/X 10 times per day. Each post is an image-only tweet featuring a random verse on a beautiful heavenly gradient background.
 
+## Example Output
+
+![Example verse image](verse_post.png)
+
 ## Features
 
 - Random Bible verses from [labs.bible.org](https://labs.bible.org) API (free, no key needed)

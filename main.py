@@ -70,10 +70,6 @@ def main():
     tweet_id = post_image_tweet(image_path)
     print(f"Done! Tweet ID: {tweet_id}")
 
-    # Clean up the generated image
-    if os.path.exists(OUTPUT_IMAGE):
-        os.remove(OUTPUT_IMAGE)
-
 
 if __name__ == "__main__":
     main()
