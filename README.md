@@ -64,9 +64,13 @@ The bot posts at these UTC hours: 01:00, 03:00, 05:00, 07:00, 09:00, 11:00, 13:0
 ├── main.py                # Orchestrator
 ├── generate_image.py      # Image generation (Pillow)
 ├── post_tweet.py          # Twitter API posting (tweepy)
+├── assets/
+│   └── overlay.png        # Decorative overlay image
 ├── fonts/
 │   └── Cabin-Regular.ttf  # Cabin font
 ├── requirements.txt
+├── pyproject.toml         # Project metadata & dependencies (uv)
+├── .env.example           # Template for environment variables
 ├── .github/workflows/
 │   └── post.yml           # GitHub Actions cron workflow
 └── README.md

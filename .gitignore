@@ -1,6 +1,15 @@
+# Python
 __pycache__/
 *.pyc
-*.png
-!fonts/
-.env
+.venv/
 venv/
+
+# Environment
+.env
+
+# Generated output
+*.png
+!assets/*.png
+
+# IDE
+.vscode/

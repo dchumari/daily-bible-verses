@@ -1,6 +1,5 @@
 import os
 import random
-import textwrap
 from PIL import Image, ImageDraw, ImageFont
 
 # Image dimensions
@@ -11,7 +10,9 @@ HEIGHT = 2707
 PADDING = 200
 
 # Font settings
-FONT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FONT_DIR = os.path.join(BASE_DIR, "fonts")
+OVERLAY_PATH = os.path.join(BASE_DIR, "assets", "overlay.png")
 FONT_PATH = os.path.join(FONT_DIR, "Cabin-Regular.ttf")
 FONT_SIZE = 100
 LINE_SPACING = 20
@@ -126,6 +127,26 @@ def generate_verse_image(verse_text, reference, output_path="output.png"):
 
     # Generate gradient
     image = generate_gradient(WIDTH, HEIGHT, top_color, bottom_color)
+
+    # Overlay the decorative image between gradient and text at 25% opacity
+    overlay = Image.open(OVERLAY_PATH).convert("RGBA")
+    # Scale proportionally to fit the height, keeping aspect ratio
+    scale = HEIGHT / overlay.height
+    new_width = int(overlay.width * scale)
+    new_height = HEIGHT
+    overlay = overlay.resize((new_width, new_height), Image.LANCZOS)
+    # Set overlay opacity to 25%
+    alpha = overlay.split()[3]
+    alpha = alpha.point(lambda p: int(p * 0.25))
+    overlay.putalpha(alpha)
+    # Center the overlay on the canvas
+    overlay_canvas = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
+    paste_x = (WIDTH - new_width) // 2
+    overlay_canvas.paste(overlay, (paste_x, 0))
+    image = image.convert("RGBA")
+    image = Image.alpha_composite(image, overlay_canvas)
+    image = image.convert("RGB")
+
     draw = ImageDraw.Draw(image)
 
     # Load font

@@ -1,7 +1,7 @@
 [project]
 name = "daily-bible-verse"
 version = "0.1.0"
-description = "Add your description here"
+description = "Automated Twitter bot that posts Bible verse poster images"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
